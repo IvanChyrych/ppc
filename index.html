@@ -1,454 +1,455 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Настройка контекстной рекламы | Чирич Иван</title>
+  <title>Настройка контекстной рекламы | Чирич Иван</title>
 
-<style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    body {
+      font-family: Arial;
+      background: #f5f7fb;
+      color: #222;
+      line-height: 1.6;
+    }
 
-body{
-font-family:Arial;
-background:#f5f7fb;
-color:#222;
-line-height:1.6;
-}
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 20px;
+    }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:60px 20px;
-}
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
 
-h1{
-font-size:40px;
-margin-bottom:10px;
-}
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
 
-h2{
-text-align:center;
-font-size:32px;
-margin-bottom:40px;
-}
+    h3 {
+      margin-bottom: 10px;
+    }
 
-h3{
-margin-bottom:10px;
-}
+    p {
+      color: #555;
+    }
 
-p{
-color:#555;
-}
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      text-align: center;
+      padding: 90px 20px;
+    }
 
-.hero{
-background:linear-gradient(135deg,#2563eb,#1e40af);
-color:white;
-text-align:center;
-padding:90px 20px;
-}
+    .hero img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid white;
+    }
 
-.hero img{
-width:170px;
-height:170px;
-border-radius:50%;
-object-fit:cover;
-margin-bottom:20px;
-border:4px solid white;
-}
+    .hero-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 30px;
+      background: white;
+      color: #2563eb;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.hero-btn{
-display:inline-block;
-margin-top:20px;
-padding:14px 30px;
-background:white;
-color:#2563eb;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-}
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+      transition: 0.3s;
+    }
 
-.card{
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,0.07);
-transition:0.3s;
-}
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-.card:hover{
-transform:translateY(-5px);
-}
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      text-align: center;
+    }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:25px;
-text-align:center;
-}
+    .stat {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    }
 
-.stat{
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,0.07);
-}
+    .stat h3 {
+      font-size: 38px;
+      color: #2563eb;
+    }
 
-.stat h3{
-font-size:38px;
-color:#2563eb;
-}
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
 
-.portfolio{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
+    .portfolio-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    }
 
-.portfolio-item{
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.07);
-}
+    .portfolio-item img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      cursor: pointer;
+    }
 
-.portfolio-item img{
-width:100%;
-height:auto;
-object-fit:contain;
-cursor:pointer;
-}
+    .portfolio-content {
+      padding: 20px;
+    }
 
-.portfolio-content{
-padding:20px;
-}
+    .result {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #1e40af;
+    }
 
-.result{
-margin-top:12px;
-font-weight:bold;
-color:#1e40af;
-}
+    .result span {
+      background: #e0e7ff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-right: 6px;
+    }
 
-.result span{
-background:#e0e7ff;
-padding:4px 8px;
-border-radius:6px;
-margin-right:6px;
-}
+    .client-link {
+      display: block;
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: bold;
+    }
 
-.client-link{
-display:block;
-padding:15px;
-text-align:center;
-text-decoration:none;
-color:#2563eb;
-font-weight:bold;
-}
+    .contact {
+      background: #2563eb;
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
 
-.contact{
-background:#2563eb;
-color:white;
-text-align:center;
-padding:70px 20px;
-}
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 25px;
+    }
 
-.contact-buttons{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:20px;
-margin-top:25px;
-}
+    .btn {
+      padding: 14px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+    }
 
-.btn{
-padding:14px 24px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-color:white;
-}
+    .phone {
+      background: #1e40af;
+    }
 
-.phone{background:#1e40af;}
-.telegram{background:#0284c7;}
-.viber{background:#7c3aed;}
+    .telegram {
+      background: #0284c7;
+    }
 
-footer{
-text-align:center;
-padding:25px;
-background:#eee;
-}
+    .viber {
+      background: #7c3aed;
+    }
 
-</style>
+    .inst {
+      background: #e84fdb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #eee;
+    }
+  </style>
 
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-ND53M4Z6');</script>
-<!-- End Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-ND53M4Z6');</script>
+  <!-- End Google Tag Manager -->
 
-<link rel="icon" type="image/png" sizes="32x32" href="../cpp/favicon-32x32.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../cpp/favicon-32x32.jpg">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10963540716"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10963540716"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'AW-10963540716');
-</script>
+    gtag('config', 'AW-10963540716');
+  </script>
 
 </head>
 
 <body>
 
-<section class="hero">
+  <section class="container">
 
-<img src="photo_5343868159192592768_y.jpg">
+    <h2>Настройка контекстной рекламы</h2>
 
-<h3>Настройка и ведение контекстной рекламы с 2012 года | Чирич Иван</h3>
+    <div class="services">
 
-<a href="#contact" class="hero-btn">Получить консультацию</a>
+      <div class="card">
+        <h3>Google Ads</h3>
+        <p>Настройка и ведение рекламных кампаний Google для стабильного потока клиентов.</p>
+      </div>
 
-</section>
+      <div class="card">
+        <h3>Яндекс Директ</h3>
+        <p>Запуск и оптимизация рекламы Яндекс для увеличения заявок.</p>
+      </div>
 
-<section class="container">
+    </div>
 
-<h2>Мои услуги</h2>
+  </section>
 
-<div class="services">
+  <section class="container">
 
-<div class="card">
-<h3>Google Ads</h3>
-<p>Настройка и ведение рекламных кампаний Google для стабильного потока клиентов.</p>
-</div>
 
-<div class="card">
-<h3>Яндекс Директ</h3>
-<p>Запуск и оптимизация рекламы Яндекс для увеличения заявок.</p>
-</div>
+    <section class="container">
 
-</div>
+      <h2>Примеры работ</h2>
 
-</section>
+      <div class="portfolio">
 
-<section class="container">
+        <div class="portfolio-item">
 
-<h2>Мои результаты</h2>
+          <img src="./screenshots/gruzoperevozki.PNG">
 
-<div class="stats">
+          <div class="portfolio-content">
 
-<div class="stat">
-<h3>14+</h3>
-<p>лет опыта</p>
-</div>
+            <h3>Грузоперевозки</h3>
 
-<div class="stat">
-<h3>120+</h3>
-<p>проектов</p>
-</div>
+            <p>После оптимизации рекламных кампаний значительно увеличилось количество заявок.</p>
 
-<div class="stat">
-<h3>3-5x</h3>
-<p>рост заявок</p>
-</div>
+            <div class="result">
+              <span>+320%</span> заявок
+              <span>-45%</span> цена лида
+            </div>
 
-<div class="stat">
-<h3>-40%</h3>
-<p>стоимость лида</p>
-</div>
+          </div>
 
-</div>
+        </div>
 
-</section>
 
-<section class="container">
+        <div class="portfolio-item">
 
-<h2>Примеры работ</h2>
+          <img src="./screenshots/english-school.PNG">
 
-<div class="portfolio">
+          <div class="portfolio-content">
 
-<div class="portfolio-item">
+            <h3>Школа английского</h3>
 
-<img src="./screenshots/gruzoperevozki.PNG">
+            <p>Запуск рекламной кампании для привлечения учеников на обучение.</p>
 
-<div class="portfolio-content">
+            <div class="result">
+              <span>+210%</span> заявок
+              <span>-37%</span> стоимость заявки
+            </div>
 
-<h3>Грузоперевозки</h3>
+          </div>
 
-<p>После оптимизации рекламных кампаний значительно увеличилось количество заявок.</p>
+        </div>
 
-<div class="result">
-<span>+320%</span> заявок  
-<span>-45%</span> цена лида
-</div>
 
-</div>
+        <div class="portfolio-item">
 
-</div>
+          <img src="./screenshots/it-courses.PNG">
 
+          <div class="portfolio-content">
 
-<div class="portfolio-item">
+            <h3>IT-курсы</h3>
 
-<img src="./screenshots/english-school.PNG">
+            <p>Реклама для набора студентов на IT-обучение.</p>
 
-<div class="portfolio-content">
+            <div class="result">
+              <span>+280%</span> регистраций
+              <span>-41%</span> стоимость заявки
+            </div>
 
-<h3>Школа английского</h3>
+          </div>
 
-<p>Запуск рекламной кампании для привлечения учеников на обучение.</p>
+        </div>
 
-<div class="result">
-<span>+210%</span> заявок  
-<span>-37%</span> стоимость заявки
-</div>
+      </div>
 
-</div>
+    </section>
 
-</div>
+    <h2>Мои результаты</h2>
 
+    <div class="stats">
 
-<div class="portfolio-item">
+      <div class="stat">
+        <h3>14+</h3>
+        <p>лет опыта</p>
+      </div>
 
-<img src="./screenshots/it-courses.PNG">
+      <div class="stat">
+        <h3>120+</h3>
+        <p>проектов</p>
+      </div>
 
-<div class="portfolio-content">
+      <div class="stat">
+        <h3>3-5x</h3>
+        <p>рост заявок</p>
+      </div>
 
-<h3>IT-курсы</h3>
+      <div class="stat">
+        <h3>-40%</h3>
+        <p>стоимость лида</p>
+      </div>
 
-<p>Реклама для набора студентов на IT-обучение.</p>
+    </div>
 
-<div class="result">
-<span>+280%</span> регистраций  
-<span>-41%</span> стоимость заявки
-</div>
+  </section>
 
-</div>
 
-</div>
+  <section class="container">
 
-</div>
+    <section class="hero">
 
-</section>
+      <img src="photo_5343868159192592768_y.jpg">
 
-<section class="container">
+      <h3>Настройка и ведение контекстной рекламы с 2012 года | Чирич Иван</h3>
 
-<h2>Мои клиенты</h2>
+      <a href="#contact" class="hero-btn">Получить консультацию</a>
 
-<div class="portfolio">
+    </section>
 
-<div class="portfolio-item">
-<img src="./screenshots/pneumatics.PNG">
-<a class="client-link" href="https://pneumatics.by" target="_blank">pneumatics.by</a>
-</div>
+    <h2>Мои клиенты</h2>
 
-<div class="portfolio-item">
-<img src="./screenshots/vmeste-print.PNG">
-<a class="client-link" href="https://vmeste-print.by" target="_blank">vmeste-print.by</a>
-</div>
+    <div class="portfolio">
 
-<div class="portfolio-item">
-<img src="./screenshots/vmeste-studio.PNG">
-<a class="client-link" href="https://vmeste-studio.by" target="_blank">vmeste-studio.by</a>
-</div>
+      <div class="portfolio-item">
+        <img src="./screenshots/pneumatics.PNG">
+        <a class="client-link" href="https://pneumatics.by" target="_blank">pneumatics.by</a>
+      </div>
 
-<div class="portfolio-item">
-<img src="./screenshots/asstra.ru.PNG">
-<a class="client-link" href="https://asstra.ru" target="_blank">asstra.ru</a>
-</div>
+      <div class="portfolio-item">
+        <img src="./screenshots/vmeste-print.PNG">
+        <a class="client-link" href="https://vmeste-print.by" target="_blank">vmeste-print.by</a>
+      </div>
 
-<div class="portfolio-item">
-<img src="./screenshots/1akb.PNG">
-<a class="client-link" href="https://1akb.by" target="_blank">1akb.by</a>
-</div>
+      <div class="portfolio-item">
+        <img src="./screenshots/vmeste-studio.PNG">
+        <a class="client-link" href="https://vmeste-studio.by" target="_blank">vmeste-studio.by</a>
+      </div>
 
-</div>
+      <div class="portfolio-item">
+        <img src="./screenshots/asstra.ru.PNG">
+        <a class="client-link" href="https://asstra.ru" target="_blank">asstra.ru</a>
+      </div>
 
-</section>
+      <div class="portfolio-item">
+        <img src="./screenshots/1akb.PNG">
+        <a class="client-link" href="https://1akb.by" target="_blank">1akb.by</a>
+      </div>
 
-<section class="container">
+    </div>
 
-<h2>Сертификаты</h2>
+  </section>
 
-<div class="portfolio">
+  <section class="container">
 
-<div class="portfolio-item">
-<img src="front.PNG">
-<a class="client-link" href="front.PNG" target="_blank">Front-End Developer</a>
-</div>
+    <h2>Сертификаты</h2>
 
-<div class="portfolio-item">
-<img src="mytarget_cert_template_1024.PNG">
-<a class="client-link" href="mytarget_cert_template_1024.PNG" target="_blank">MyTarget Certification</a>
-</div>
+    <div class="portfolio">
 
-<div class="portfolio-item">
-<img src="photo_2026-03-04_16-12-42.jpg">
-<a class="client-link" href="photo_2026-03-04_16-12-42.jpg" target="_blank">Контекст курсы</a>
-</div>
+      <div class="portfolio-item">
+        <img src="front.PNG">
+        <a class="client-link" href="front.PNG" target="_blank">Front-End Developer</a>
+      </div>
 
-</div>
+      <div class="portfolio-item">
+        <img src="mytarget_cert_template_1024.PNG">
+        <a class="client-link" href="mytarget_cert_template_1024.PNG" target="_blank">MyTarget Certification</a>
+      </div>
 
-</section>
+      <div class="portfolio-item">
+        <img src="photo_2026-03-04_16-12-42.jpg">
+        <a class="client-link" href="photo_2026-03-04_16-12-42.jpg" target="_blank">Контекст курсы</a>
+      </div>
 
-<section class="contact" id="contact">
+    </div>
 
-<h2>Контакты</h2>
+  </section>
 
-<div class="contact-buttons">
+  <section class="contact" id="contact">
 
-<a href="tel:+375259152492" class="btn phone">📞 Позвонить</a>
+    <h2>Контакты</h2>
 
-<a href="viber://chat?number=%2B375259152492" class="btn viber">Viber</a>
+    <div class="contact-buttons">
 
-<a href="https://t.me/ivanchyrychppc" target="_blank" class="btn telegram">Telegram</a>
+      <a href="tel:+375259152492" class="btn phone">📞 Позвонить</a>
 
-</div>
+      <a href="https://www.instagram.com/ivan.minsk.ppc" class="btn inst">Instagram</a>
 
-</section>
+      <a href="viber://chat?number=%2B375259152492" class="btn viber">Viber</a>
 
-<footer>
+      <a href="https://t.me/ivanchyrychppc" target="_blank" class="btn telegram">Telegram</a>
 
-© 2026 Чирич Иван | Контекстная реклама
+    </div>
 
-</footer>
+  </section>
+
+  <footer>
+
+    © 2026 Чирич Иван | Контекстная реклама
+
+  </footer>
 
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND53M4Z6"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND53M4Z6" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
