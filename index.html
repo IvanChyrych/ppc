@@ -2,166 +2,88 @@
 <html lang="ru">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Настройка контекстной рекламы | Чирич Иван</title>
+  <title>Чирич Иван | Performance Marketing</title>
+  <meta name="description" content="Google Ads и Яндекс Директ. Рост заявок, снижение стоимости лида, 14 лет опыта.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
+      margin: 0;
+      padding: 0
     }
 
-    body {
-      font-family: Arial;
-      background: #f5f7fb;
-      color: #222;
-      line-height: 1.6;
+    /* Увеличение картинок кейсов */
+    .case img,
+    .certificates img {
+      cursor: zoom-in;
+      transition: .3s;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 20px;
+    .case img:hover,
+    .certificates img:hover {
+      transform: scale(1.03);
     }
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
+    .case img:hover {
+      transform: scale(1.03);
     }
 
-    h2 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
 
-    h3 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #555;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: white;
-      text-align: center;
-      padding: 90px 20px;
-    }
-
-    .hero img {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 4px solid white;
-    }
-
-    .hero-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 30px;
-      background: white;
-      color: #2563eb;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 25px;
-      text-align: center;
-    }
-
-    .stat {
-      background: white;
+    /* Окно увеличения */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      inset: 0;
+      background: rgba(0, 0, 0, .85);
+      justify-content: center;
+      align-items: center;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
     }
 
-    .stat h3 {
-      font-size: 38px;
-      color: #2563eb;
-    }
-
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .portfolio-item {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      height: auto;
+    .lightbox img {
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 20px;
       object-fit: contain;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 45px;
+      color: white;
       cursor: pointer;
     }
 
-    .portfolio-content {
-      padding: 20px;
+    /* Сертификаты */
+    .certificates {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
     }
 
-    .result {
-      margin-top: 12px;
-      font-weight: bold;
-      color: #1e40af;
+    .certificates .step {
+      overflow: hidden;
     }
 
-    .result span {
-      background: #e0e7ff;
-      padding: 4px 8px;
-      border-radius: 6px;
-      margin-right: 6px;
-    }
-
-    .client-link {
+    .certificates img {
+      width: 100%;
+      height: auto;
+      max-height: 350px;
+      object-fit: contain;
+      border-radius: 15px;
       display: block;
-      padding: 15px;
-      text-align: center;
-      text-decoration: none;
-      color: #2563eb;
-      font-weight: bold;
-    }
-
-    .contact {
-      background: #2563eb;
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
     }
 
     .contact-buttons {
@@ -172,39 +94,308 @@
       margin-top: 25px;
     }
 
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      background: #08090c;
+      color: #fff;
+      overflow-x: hidden
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: #a3ff1220;
+      filter: blur(140px);
+      top: -200px;
+      right: -200px;
+      z-index: -1
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 25px
+    }
+
+    header {
+      padding: 30px 0;
+      position: absolute;
+      width: 100%;
+      z-index: 5
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800
+    }
+
     .btn {
-      padding: 14px 24px;
-      border-radius: 30px;
+      background: #a3ff12;
+      color: #000;
+      padding: 15px 32px;
+      border-radius: 50px;
+      font-weight: 800;
       text-decoration: none;
-      font-weight: bold;
-      color: white;
+      transition: .3s
     }
 
-    .phone {
-      background: #1e40af;
+    .btn:hover {
+      transform: translateY(-4px)
     }
 
-    .telegram {
-      background: #0284c7;
-    }
-    
-    .max {
-      background: #fffb19;
-      color: black;
-    }
-
-    .viber {
-      background: #7c3aed;
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 60px;
+      align-items: center
     }
 
-    .inst {
-      background: #e84fdb;
+    .badge {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #151820;
+      border: 1px solid #292d38;
+      border-radius: 50px;
+      color: #a3ff12;
+      margin-bottom: 30px;
+      animation: fade .8s
+    }
+
+    h1 {
+      font-size: 72px;
+      line-height: 1;
+      letter-spacing: -3px;
+      animation: fade .9s
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: #a5a7b0;
+      margin: 30px 0;
+      max-width: 600px
+    }
+
+    .metrics {
+      display: flex;
+      gap: 45px;
+      margin: 40px 0
+    }
+
+    .metrics strong {
+      display: block;
+      font-size: 45px;
+      color: #a3ff12
+    }
+
+    .metrics span {
+      color: #999
+    }
+
+    .photo {
+      position: relative
+    }
+
+    .photo img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: 35px;
+      filter: grayscale(15%)
+    }
+
+    .float-card {
+      position: absolute;
+      bottom: 30px;
+      left: -40px;
+      background: #151820;
+      border: 1px solid #30333d;
+      padding: 25px;
+      border-radius: 25px;
+      animation: float 4s infinite
+    }
+
+    .float-card b {
+      font-size: 45px;
+      color: #a3ff12
+    }
+
+    section {
+      padding: 110px 0
+    }
+
+    h2 {
+      font-size: 50px;
+      margin-bottom: 60px
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px
+    }
+
+    .card,
+    .case,
+    .step {
+      background: #11131a;
+      border: 1px solid #232733;
+      border-radius: 28px;
+      padding: 35px;
+      transition: .4s
+    }
+
+    .card:hover,
+    .case:hover,
+    .step:hover {
+      transform: translateY(-10px);
+      border-color: #a3ff12
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px
+    }
+
+    .step span {
+      font-size: 40px;
+      color: #a3ff12;
+      font-weight: 900
+    }
+
+    .cases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px
+    }
+
+    .case img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 20px
+    }
+
+    .before-after {
+      margin-top: 25px;
+      display: grid;
+      gap: 12px
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      background: #171a22;
+      padding: 12px 18px;
+      border-radius: 12px
+    }
+
+    .after {
+      color: #a3ff12;
+      font-weight: 800
+    }
+
+    .chart {
+      height: 180px;
+      display: flex;
+      align-items: end;
+      gap: 15px;
+      margin-top: 25px
+    }
+
+    .bar {
+      flex: 1;
+      background: #303642;
+      border-radius: 10px 10px 0 0;
+      animation: grow 1.5s
+    }
+
+    .bar.active {
+      background: #a3ff12
+    }
+
+    .contact {
+      text-align: center;
+      background: #101218;
+      border-radius: 40px;
+      padding: 80px 30px;
+      margin-bottom: 60px
+    }
+
+    input,
+    button {
+      width: 100%;
+      max-width: 450px;
+      padding: 18px;
+      margin: 8px;
+      border-radius: 15px;
+      border: 1px solid #333;
+      background: #090a0e;
+      color: #fff
+    }
+
+    button {
+      background: #a3ff12;
+      color: #000;
+      font-weight: 800;
+      cursor: pointer
     }
 
     footer {
+      padding: 40px;
       text-align: center;
-      padding: 25px;
-      background: #eee;
+      color: #777
+    }
+
+    @keyframes float {
+      50% {
+        transform: translateY(-15px)
+      }
+    }
+
+    @keyframes grow {
+      from {
+        height: 0
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+    }
+
+    @media(max-width:900px) {
+
+      .hero,
+      .grid,
+      .steps,
+      .cases {
+        grid-template-columns: 1fr
+      }
+
+      h1 {
+        font-size: 44px
+      }
+
+      .photo img {
+        height: 400px
+      }
     }
   </style>
 
@@ -231,232 +422,238 @@
     gtag('config', 'G-NS2PG3WQ9Y');
   </script>
 
+
 </head>
 
 <body>
 
-  <section class="container">
-
-    <h2>Настройка контекстной рекламы</h2>
-
-    <div class="services">
-
-      <div class="card">
-        <h3>Google Ads</h3>
-        <p>Настройка и ведение рекламных кампаний Google для стабильного потока клиентов.</p>
-      </div>
-
-      <div class="card">
-        <h3>Яндекс Директ</h3>
-        <p>Запуск и оптимизация рекламы Яндекс для увеличения заявок.</p>
-      </div>
-
+  <header>
+    <div class="container nav">
+      <div class="logo">Чирич Иван</div>
+      <a class="btn" href="#contact">Контакты</a>
     </div>
+  </header>
 
-  </section>
-
-  <section class="container">
-
-
-    <section class="container">
-
-      <h2 id="examples">Примеры работ</h2>
-
-      <div class="portfolio">
-
-        <div class="portfolio-item">
-
-          <img src="./screenshots/gruzoperevozki.PNG">
-
-          <div class="portfolio-content">
-
-            <h3>Грузоперевозки</h3>
-
-            <p>После оптимизации рекламных кампаний значительно увеличилось количество заявок.</p>
-
-            <div class="result">
-              <span>+320%</span> заявок
-              <span>-45%</span> цена лида
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="portfolio-item">
-
-          <img src="./screenshots/english-school.PNG">
-
-          <div class="portfolio-content">
-
-            <h3>Школа английского</h3>
-
-            <p>Запуск рекламной кампании для привлечения учеников на обучение.</p>
-
-            <div class="result">
-              <span>+210%</span> заявок
-              <span>-37%</span> стоимость заявки
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="portfolio-item">
-
-          <img src="./screenshots/it-courses.PNG">
-
-          <div class="portfolio-content">
-
-            <h3>IT-курсы</h3>
-
-            <p>Реклама для набора студентов на IT-обучение.</p>
-
-            <div class="result">
-              <span>+280%</span> регистраций
-              <span>-41%</span> стоимость заявки
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <h2 id="results">Мои результаты</h2>
-
-    <div class="stats">
-
-      <div class="stat">
-        <h3>14+</h3>
-        <p>лет опыта</p>
-      </div>
-
-      <div class="stat">
-        <h3>120+</h3>
-        <p>проектов</p>
-      </div>
-
-      <div class="stat">
-        <h3>3-5x</h3>
-        <p>рост заявок</p>
-      </div>
-
-      <div class="stat">
-        <h3>-40%</h3>
-        <p>стоимость лида</p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="container">
+  <main class="container">
 
     <section class="hero">
 
-      <img src="photo_5343868159192592768_y.jpg">
+      <div>
+        <div class="badge">Performance Marketing • Google Ads • Яндекс Директ</div>
 
-      <h3>Настройка и ведение контекстной рекламы с 2012 года | Чирич Иван</h3>
+        <h1>
+          Реклама, которая приносит клиентов
+        </h1>
 
-      <a href="#contact" class="hero-btn">Получить консультацию</a>
+        <p>
+          14 лет настраиваю рекламные системы так, чтобы бизнес получал больше заявок при меньшей стоимости привлечения.
+        </p>
+
+        <div class="metrics">
+          <div><strong>14+</strong><span>лет опыта</span></div>
+          <div><strong>120+</strong><span>проектов</span></div>
+          <div><strong>-40%</strong><span>CPL</span></div>
+        </div>
+
+        <a class="btn" href="#contact">Получить аудит</a>
+      </div>
+
+      <div class="photo">
+        <img src="photo_5343868159192592768_y.jpg" alt="Чирич Иван">
+        <div class="float-card">
+          <b>3-5x</b>
+          <br>рост заявок
+        </div>
+      </div>
 
     </section>
 
-    <h2 id="clients">Мои клиенты</h2>
 
-    <div class="portfolio">
+    <section>
+      <h2>Почему мне доверяют</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Стратегия</h3>
+          <p>Не просто запускаю рекламу — строю систему привлечения клиентов.</p>
+        </div>
+        <div class="card">
+          <h3>Аналитика</h3>
+          <p>Все решения принимаются на основе данных.</p>
+        </div>
+        <div class="card">
+          <h3>Опыт</h3>
+          <p>Разные ниши: B2B, услуги, обучение, производство.</p>
+        </div>
+      </div>
+    </section>
 
-      <div class="portfolio-item">
-        <img src="./screenshots/pneumatics.PNG">
-        <a class="client-link" href="https://pneumatics.by" target="_blank">pneumatics.by</a>
+
+    <section>
+      <h2>Процесс работы</h2>
+      <div class="steps">
+        <div class="step"><span>01</span>
+          <h3>Анализ</h3>
+          <p>Изучение бизнеса.</p>
+        </div>
+        <div class="step"><span>02</span>
+          <h3>Запуск</h3>
+          <p>Настройка кампаний.</p>
+        </div>
+        <div class="step"><span>03</span>
+          <h3>Оптимизация</h3>
+          <p>Рост эффективности.</p>
+        </div>
+        <div class="step"><span>04</span>
+          <h3>Масштабирование</h3>
+          <p>Больше продаж.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <h2>Кейсы: было → стало</h2>
+
+      <div class="cases">
+
+        <div class="case">
+          <img src="./screenshots/gruzoperevozki.PNG">
+          <h3>Грузоперевозки</h3>
+
+          <div class="before-after">
+            <div class="line">Цена лида <span>50 BYN</span></div>
+            <div class="line">Цена лида после <span class="after">20 BYN</span></div>
+            <div class="line">Заявки <span class="after">+320%</span></div>
+          </div>
+
+          <div class="chart">
+            <div class="bar" style="height:40%"></div>
+            <div class="bar active" style="height:90%"></div>
+          </div>
+
+        </div>
+
+        <div class="case">
+          <img src="./screenshots/english-school.PNG">
+          <h3>Школа английского</h3>
+
+          <div class="before-after">
+            <div class="line">Заявки <span>100</span></div>
+            <div class="line">После <span class="after">310</span></div>
+            <div class="line">Стоимость <span class="after">-37%</span></div>
+          </div>
+
+        </div>
+
+        <div class="case">
+          <img src="./screenshots/it-courses.PNG">
+          <h3>IT-курсы</h3>
+
+          <div class="before-after">
+            <div class="line">Регистрации <span>100</span></div>
+            <div class="line">После <span class="after">380</span></div>
+            <div class="line">CPL <span class="after">-41%</span></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+    <section>
+
+      <h2>Сертификаты</h2>
+
+      <div class="certificates">
+
+        <div class="step">
+          <img src="front.PNG">
+          <a class="client-link" href="front.PNG" target="_blank">Front-End Developer</a>
+        </div>
+
+        <div class="step">
+          <img src="mytarget_cert_template_1024.PNG">
+          <a class="client-link" href="mytarget_cert_template_1024.PNG" target="_blank">MyTarget Certification</a>
+        </div>
+
+        <div class="step">
+          <img src="photo_2026-03-04_16-12-42.jpg">
+          <a class="client-link" href="photo_2026-03-04_16-12-42.jpg" target="_blank">Контекст курсы</a>
+        </div>
+
       </div>
 
-      <div class="portfolio-item">
-        <img src="./screenshots/vmeste-print.PNG">
-        <a class="client-link" href="https://vmeste-print.by" target="_blank">vmeste-print.by</a>
+    </section>
+
+
+
+
+
+    <section class="contact step" id="contact">
+
+      <h2>Контакты</h2>
+
+      <div class="contact-buttons">
+
+        <a href="tel:+375259152492" class="btn phone">📞 Позвонить</a>
+
+        <a href="https://www.instagram.com/ivan.minsk.ppc" class="btn inst">Instagram</a>
+
+        <a href="viber://chat?number=%2B375259152492" class="btn viber">Viber</a>
+
+        <a href="https://t.me/ivanchyrychppc" target="_blank" class="btn telegram">Telegram</a>
+
       </div>
 
-      <div class="portfolio-item">
-        <img src="./screenshots/vmeste-studio.PNG">
-        <a class="client-link" href="https://vmeste-studio.by" target="_blank">vmeste-studio.by</a>
-      </div>
+    </section>
 
-      <div class="portfolio-item">
-        <img src="./screenshots/asstra.ru.PNG">
-        <a class="client-link" href="https://asstra.ru" target="_blank">asstra.ru</a>
-      </div>
-
-      <div class="portfolio-item">
-        <img src="./screenshots/1akb.PNG">
-        <a class="client-link" href="https://1akb.by" target="_blank">1akb.by</a>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section class="container">
-
-    <h2 id="certificates">Сертификаты</h2>
-
-    <div class="portfolio">
-
-      <div class="portfolio-item">
-        <img src="front.PNG">
-        <a class="client-link" href="front.PNG" target="_blank">Front-End Developer</a>
-      </div>
-
-      <div class="portfolio-item">
-        <img src="mytarget_cert_template_1024.PNG">
-        <a class="client-link" href="mytarget_cert_template_1024.PNG" target="_blank">MyTarget Certification</a>
-      </div>
-
-      <div class="portfolio-item">
-        <img src="photo_2026-03-04_16-12-42.jpg">
-        <a class="client-link" href="photo_2026-03-04_16-12-42.jpg" target="_blank">Контекст курсы</a>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section class="contact" id="contact">
-
-    <h2 id="contacts">Контакты</h2>
-
-    <div class="contact-buttons">
-
-      <a href="tel:+375259152492" class="btn phone">📞 Позвонить</a>
-
-      <a href="https://www.instagram.com/ivan.minsk.ppc" class="btn inst">Instagram</a>
-
-      <a href="viber://chat?number=%2B375259152492" class="btn viber">Viber</a>
-
-      <a href="https://t.me/ivanchyrychppc" target="_blank" class="btn telegram">Telegram</a>
-
-      <a href="https://max.ru/u/f9LHodD0cOJG1QAJUAREq40hLUo-NMoXQFFcK26cMQosGRM6bPRE3PbsicY" target="_blank" class="btn max">MAX</a>
-      
-
-    </div>
-
-  </section>
+  </main>
 
   <footer>
-
-    © 2026 Чирич Иван | Контекстная реклама
-
+    © 2026 Чирич Иван
   </footer>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RGZB3LW" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close">&times;</div>
+    <img src="" alt="Увеличенное изображение">
+  </div>
+
+  <script>
+    const zoomImages = document.querySelectorAll('.case img, .certificates img');
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+
+    zoomImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 
